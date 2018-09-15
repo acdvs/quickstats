@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">-->
+		<meta name="keywords" content="Adam Davies, statistics, calculations, easy, quick, formulas, web design, freelance, independent, student">
+		<meta name="description" content="A simple and easy-to-use tool to quickly find basic statistical data such as standard deviation, variance, center estimates, z-score, and many others.">
+		<meta name="author" content="Adam Davies">
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+		<script type="text/javascript" src="script.js"></script>
+		<link href="http://fonts.googleapis.com/css?family=Roboto:400" rel="stylesheet" type="text/css">
+		<title>QuickStats</title>
+	</head>
+	<body>
+		<header class="ilchild">
+			<h1 id="title">QuickStats</h1>
+			<h2>A simple tool for calculating<br>basic statistical sample data.</h2>
+			<a href="http://adam-davies.me" class="reg-box">HOME</a>
+		</header>
+		<section>
+			<div id="content">
+				<!-- LEFT PANE -->
+				<div id="input-pane" class="pane">
+					<div class="settings-wrap">
+						<h3>Settings</h3>
+						<div class="settings reg-box">
+							<div id="input-settings" class="settings-pane">
+								<span>Input</span>
+								<div class="group">
+									<div class="subgroup">
+										<span title="Character to split X input at">X separator:</span>
+										<input type="text" class="io-field" name="xseparator" value="," maxlength="1">
+									</div>
+									<div class="subgroup">
+										<span title="Character to split Y input at">Y separator:</span>
+										<input type="text" class="io-field" name="yseparator" value="," maxlength="1">
+									</div>
+								</div>
+								<div class="group">
+									<input type="checkbox" class="io-field" name="errcheck" value="errcheck" checked>
+									<label for="errcheck" title="Show warning if a value is Not a Number">Show NaN warning</label>
+								</div>
+							</div>
+							<div id="output-settings" class="settings-pane">
+								<span>Output</span>
+								<div class="group">
+									<div class="subgroup">
+										<input type="radio" class="io-field" name="order" value="inc" checked>
+										<label for="inc" title="Order values from smallest to largest">Increasing</label>
+									</div>
+									<div class="subgroup">
+										<input type="radio" class="io-field" name="order" value="dec">
+										<label for="dec" title="Order values from largest to smallest">Decreasing</label>
+									</div>
+								</div>
+								<div class="group">
+									<label for="round" title="Number of decimal places to round to">Decimal places: </label>
+									<select class="io-field" name="round">
+										<option value="0">0</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4" selected>4</option>
+										<option value="5">5</option>
+										<option value="6">6</option>
+										<option value="all">All</option>
+									</select>
+								</div>
+							</div>
+							<div style="clear:both"></div>
+						</div>
+					</div>
+					<div class="big-input">
+						<h3>X values</h3>
+						<textarea class="xvals io-field" placeholder="Enter numbers here"></textarea>
+						<span class="error">Non-digit input detected!</span>
+					</div>
+				</div>
+				<!-- RIGHT PANE -->
+				<div id="output-pane" class="pane">
+					<input id="raw-data" class="io-field" placeholder="no input" readonly="readonly">
+					<div class="output-wrap reg-box">
+						<div class="category">
+							<h4>Sample Properties</h4>
+							<div class="subgroup ilchild">
+								<div id="length" class="item">Length $n$: <span class="result">--</span></div>
+								<div id="sum" class="item">Sum $\sum x_i$: <span class="result round">--</span></div>
+								<div id="sum2" class="item">Sum $\sum x_i^2$: <span class="result round">--</span></div>
+							</div>
+						</div>
+						<div class="category">
+							<h4>Measures of Center</h4>
+							<div class="subgroup ilchild">
+								<div id="mean" class="item">Mean $\bar{x}$: <span class="result round">--</span></div>
+								<div id="median" class="item">Median $Md$: <span class="result round">--</span></div>
+								<div id="medpos" class="item">Median pos $Mx$: <span class="result">--</span></div>
+								<div id="mode" class="item">Mode $Mo$: <span class="result">--</span></div>
+							</div>
+						</div>
+						<div class="category">
+							<h4>Measures of Spread</h4>
+							<div class="subgroup ilchild">
+								<div id="range" class="item">Range $R$: <span class="result round">--</span></div>
+								<div id="variance" class="item">Variance $s^2$: <span class="result round">--</span></div>
+								<div id="stddev" class="item">Standard deviation $s$: <span class="result round">--</span></div>
+								<div id="stddevapprox" class="item">Std dev range approx $s$: <span class="result round">--</span></div>
+								<div id="emprule1" class="item">Cover of $\bar{x} \pm s$: <span class="result round">--</span></div>
+								<div id="emprule2" class="item">Cover of $\bar{x} \pm 2s$: <span class="result round">--</span></div>
+								<div id="emprule3" class="item">Cover of $\bar{x} \pm 3s$: <span class="result round">--</span></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div style="clear:both"></div>
+			</div>
+		</section>
+		<footer>
+			<span>Copyright &copy; <a href="http://adam-davies.me">Adam Davies</a></span>
+		</footer>
+		<script async type="text/x-mathjax-config">
+			MathJax.Hub.Config({
+				tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+			});
+		</script>
+		<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+	</body>
+</html>
